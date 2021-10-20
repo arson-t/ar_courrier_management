@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="convention_action" model="ir.actions.act_window">
+            <field name="name">Enregistrement Convention</field>
+            <field name="res_model">ar.enregistrement_convention</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="enregistrement_convention_view_form" model="ir.ui.view">
+            <field name="name">Convention</field>
+            <field name="priority">1</field>
+            <field name="model">ar.enregistrement_convention</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="createur"/>
+                                <field name="num_chrono"/>
+                                <field name="date_approbation"/>
+                                <field name="date_prevu_fin_execution"/>
+                                <field name="bailleur"/>
+                            </group>
+                            <group>
+                                <field name="titulaire"/>
+                                <field name="objet"/>
+                                <field name="responsable_projet"/>
+                                <field name="autre_destinataire" widget="many2many_tags"/>
+                                <field name="relatif_a_courier"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="observation"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <menuitem
+                id="convention_action"
+                name="Convention"
+                action="marche_action"
+                parent="menu_ar_courrier_root"
+                sequence="6"/>
+    </data>
+</odoo>

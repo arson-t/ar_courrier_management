@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="os_courrier_action" model="ir.actions.act_window">
+            <field name="name">Courrier Départ</field>
+            <field name="res_model">ar.enregistrement_os</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record id="enregistrement_os_courrier_view_form" model="ir.ui.view">
+            <field name="name">Courrier view form</field>
+            <field name="priority">1</field>
+            <field name="model">ar.enregistrement_os</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="type_courrier"/>
+                                <field name="createur"/>
+                                <field name="num_chrono"/>
+                                <field name="date_os"/>
+                                <field name="numero_os"/>
+                                <field name="date_notification_os"/>
+
+                            </group>
+                            <group>
+                                <field name="titulaire"/>
+                                <field name="num_marche"/>
+                                <field name="autre_destinataire"/>
+                                <field name="objet"/>
+                                <field name="responsable"/>
+                                <field name="autre_responsable" widget="many2many_tags"/>
+                                <field name="relatif_courier"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <menuitem
+                id="menu_ar_courrier_os"
+                name="Os"
+                action="os_courrier_action"
+                parent="menu_ar_courrier_root"
+                sequence="3"/>
+    </data>
+</odoo>

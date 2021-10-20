@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ar_type_courrier,access_ar_type_courrier,model_ar_type_courrier,base.group_user,1,1,1,1
+access_ar_courrier,access_ar_courrier,model_ar_courrier,base.group_user,1,1,1,1
+access_ar_out_going_courier,access_ar_out_going_courier,model_ar_out_going_courier,base.group_user,1,1,1,1
+access_ar_enregistrement_os,access_ar_enregistrement_os,model_ar_enregistrement_os,base.group_user,1,1,1,1
+access_ar_enregistrement_decision,access_ar_enregistrement_decision,model_ar_enregistrement_decision,base.group_user,1,1,1,1
+access_ar_enregistrement_marche,access_ar_enregistrement_marche,model_ar_enregistrement_marche,base.group_user,1,1,1,1
+access_ar_enregistrement_convention,access_ar_enregistrement_convention,model_ar_enregistrement_convention,base.group_user,1,1,1,1

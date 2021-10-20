@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="decision_action" model="ir.actions.act_window">
+            <field name="name">Enregistrement decision</field>
+            <field name="res_model">ar.enregistrement_decision</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="enregistrement_decision_view_form" model="ir.ui.view">
+            <field name="name">decision view form</field>
+            <field name="priority">1</field>
+            <field name="model">ar.enregistrement_decision</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="createur"/>
+                                <field name="num_chrono"/>
+                                <field name="personnel_concerne"/>
+                                <field name="date_decision"/>
+                                <field name="date_notification"/>
+                            </group>
+                            <group>
+                                <field name="responsable_principale"/>
+                                <field name="autre_destinataire" widget="many2many_tags"/>
+                                <field name="intitule_marche"/>
+                                <field name="objet"/>
+                                <field name="relatif_a_courier"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="observation"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <menuitem
+                id="menu_ar_decision"
+                name="decision"
+                action="decision_action"
+                parent="menu_ar_courrier_root"
+                sequence="4"/>
+    </data>
+</odoo>

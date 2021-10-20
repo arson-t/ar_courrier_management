@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="depart_courrier_action" model="ir.actions.act_window">
+            <field name="name">Courrier Départ</field>
+            <field name="res_model">ar.out_going_courier</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <record id="depart_courrier_view_form" model="ir.ui.view">
+            <field name="name">Courrier view form</field>
+            <field name="priority">1</field>
+            <field name="model">ar.out_going_courier</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="type_courrier"/>
+                                <field name="date_out_going"/>
+                                <field name="destinataire"/>
+                                <field name="autre_destinataire" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="autre_destinataire"/>
+                                <field name="responsable"/>
+                                <field name="ralatif_courrier"/>
+                                <field name="envoie_mail_au_responsable"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="observation"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <menuitem
+                id="menu_ar_courrier_depart"
+                name="Départ"
+                action="depart_courrier_action"
+                parent="menu_ar_courrier_root"
+                sequence="2"/>
+    </data>
+</odoo>
