@@ -20,3 +20,21 @@ class EnregistrementDecision(models.Model):
     objet = fields.Char(string="Objet")
     relatif_a_courier = fields.Char(string="Relatif à courrier")
     observation = fields.Text(string="Observation")
+    relatif_courier = fields.Many2one('ar.courrier', string="relatif à courrier")
+    state = fields.Selection([('draft', 'Brouillon'), ('confirm', 'Confirmer'), ('send_mail', 'Mail envoyée'),
+                              ('mail_received', 'Mail réçu')], string="Status", default="draft")
+
+    def btn_confirm(self):
+        self.write({
+            'state': 'confirm'
+        })
+
+    def send_mail(self):
+        self.write({
+            'state': 'send_mail'
+        })
+
+    def cancel_tbn(self):
+        self.write({
+            'state': 'draft'
+        })

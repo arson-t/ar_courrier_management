@@ -9,6 +9,7 @@ class Courrier(models.Model):
     _name = 'ar.courrier'
 
     name = fields.Char(string='Reference courrier', required=True)
+    numero_marche = fields.Char(string="Numéro marché referé")
     type_courrier = fields.Many2one('ar.type_courrier', string='Type courrier')
     input_form_creator = fields.Many2one('res.users', string='Input form creator')
     date_time_arrived = fields.Datetime(string='Arrived date')
@@ -48,7 +49,16 @@ class Courrier(models.Model):
                 rec.color = 1
 
     def btn_confirm(self):
-        pass
+        self.write({
+            'state': 'confirm'
+        })
 
     def send_mail(self):
-        pass
+        self.write({
+            'state': 'send_mail'
+        })
+
+    def cancel_tbn(self):
+        self.write({
+            'state': 'draft'
+        })

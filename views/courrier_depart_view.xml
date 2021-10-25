@@ -15,10 +15,20 @@
             <field name="model">ar.out_going_courier</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button attrs="{'invisible': ['|', ('state', '=', 'send_mail'), ('numero', '=', False)]}"
+                                string="Confirmer" type="object" name="btn_confirm"/>
+                        <button string="envoyer mail" type="object" name="send_mail"
+                                attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
+                        <button string="annuler" type="object" name="cancel_tbn"
+                                attrs="{'invisible': [('state', '=', 'send_mail')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
                     <sheet>
                         <group>
                             <group>
                                 <field name="name"/>
+                                <field name="numero"/>
                                 <field name="type_courrier"/>
                                 <field name="date_out_going"/>
                                 <field name="destinataire"/>
@@ -26,7 +36,7 @@
                             </group>
                             <group>
                                 <field name="autre_destinataire"/>
-                                <field name="responsable"/>
+                                <field name="responsable" widget="many2many_tags"/>
                                 <field name="ralatif_courrier"/>
                                 <field name="envoie_mail_au_responsable"/>
                             </group>

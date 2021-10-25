@@ -56,14 +56,16 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button string="Confirmer" type="object" name="btn_confirm"/>
-                        <button string="envoyer mail" type="object" name="send_mail"/>
+                        <button attrs = "{'invisible': ['|', ('state', '=', 'send_mail'), ('numero_marche', '=', False)]}" string="Confirmer" type="object" name="btn_confirm"/>
+                        <button string="envoyer mail" type="object" name="send_mail"  attrs = "{'invisible': [('state', '!=', 'confirm')]}"/>
+                        <button string="annuler" type="object" name="cancel_tbn"  attrs = "{'invisible': [('state', '=', 'send_mail')]}"/>
                          <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                         <group>
                             <group>
                                 <field name="name"/>
+                                <field name="numero_marche"/>
                                 <field name="type_courrier"/>
                                 <field name="write_create_form"/>
                                 <field name="input_form_creator"/>
@@ -91,7 +93,7 @@
 
         <menuitem
                 id="menu_ar_courrier"
-                name="courrier Arrivé"
+                name="Arrivé"
                 action="new_courrier_action"
                 parent="menu_ar_courrier_root"
                 sequence="1"/>

@@ -15,6 +15,15 @@
             <field name="model">ar.enregistrement_os</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button attrs="{'invisible': ['|', ('state', '=', 'send_mail'), ('num_chrono', '=', False)]}"
+                                string="Confirmer" type="object" name="btn_confirm"/>
+                        <button string="envoyer mail" type="object" name="send_mail"
+                                attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
+                        <button string="annuler" type="object" name="cancel_tbn"
+                                attrs="{'invisible': [('state', '=', 'send_mail')]}"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
                     <sheet>
                         <group>
                             <group>
